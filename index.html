@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Manager Koperasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .birthday-animation {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        .confetti:nth-child(2) { background: #4ecdc4; animation-delay: 0.5s; left: 20%; }
+        .confetti:nth-child(3) { background: #45b7d1; animation-delay: 1s; left: 40%; }
+        .confetti:nth-child(4) { background: #f9ca24; animation-delay: 1.5s; left: 60%; }
+        .confetti:nth-child(5) { background: #6c5ce7; animation-delay: 2s; left: 80%; }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .cake-animation {
+            animation: cake-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes cake-glow {
+            from {
+                filter: drop-shadow(0 0 5px #ffd700);
+            }
+            to {
+                filter: drop-shadow(0 0 20px #ffd700);
+            }
+        }
+        
+        .message-card {
+            transform: scale(0);
+            animation: card-appear 0.8s ease-out forwards;
+        }
+        
+        @keyframes card-appear {
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: firework 1.5s ease-out infinite;
+        }
+        
+        @keyframes firework {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 overflow-x-hidden">
+    <!-- Confetti Animation -->
+    <div class="fixed inset-0 pointer-events-none z-10">
+        <div class="confetti" style="left: 10%;"></div>
+        <div class="confetti" style="left: 30%;"></div>
+        <div class="confetti" style="left: 50%;"></div>
+        <div class="confetti" style="left: 70%;"></div>
+        <div class="confetti" style="left: 90%;"></div>
+    </div>
+
+    <!-- Fireworks -->
+    <div id="fireworks" class="fixed inset-0 pointer-events-none z-20"></div>
+
+    <div class="container mx-auto px-4 py-8 relative z-30">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 birthday-animation">
+                🎉 SELAMAT ULANG TAHUN! 🎉
+            </h1>
+            <div class="text-2xl md:text-3xl text-yellow-200 font-semibold">
+                Untuk Manager Koperasi Karyawan
+            </div>
+            <div class="text-3xl md:text-4xl text-white font-bold mt-2">
+                ADARO KARYA MANDIRI
+            </div>
+            <div class="text-2xl md:text-3xl text-yellow-300 font-bold mt-4 bg-white/20 backdrop-blur-sm rounded-2xl py-3 px-6 inline-block">
+                🎂 PAK FEDRIK CHRISTIAN ADI CANDRA 🎂
+            </div>
+        </div>
+
+        <!-- Birthday Cake -->
+        <div class="flex justify-center mb-12">
+            <div class="cake-animation">
+                <svg width="200" height="200" viewBox="0 0 200 200" class="drop-shadow-lg">
+                    <!-- Cake Base -->
+                    <rect x="40" y="120" width="120" height="60" fill="#8B4513" rx="5"/>
+                    <rect x="35" y="115" width="130" height="10" fill="#D2691E" rx="5"/>
+                    
+                    <!-- Cake Middle -->
+                    <rect x="50" y="80" width="100" height="40" fill="#DDA0DD" rx="5"/>
+                    <rect x="45" y="75" width="110" height="10" fill="#DA70D6" rx="5"/>
+                    
+                    <!-- Cake Top -->
+                    <rect x="60" y="40" width="80" height="40" fill="#FFB6C1" rx="5"/>
+                    <rect x="55" y="35" width="90" height="10" fill="#FF69B4" rx="5"/>
+                    
+                    <!-- Candles -->
+                    <rect x="80" y="20" width="4" height="20" fill="#FFFF00"/>
+                    <rect x="100" y="20" width="4" height="20" fill="#FFFF00"/>
+                    <rect x="120" y="20" width="4" height="20" fill="#FFFF00"/>
+                    
+                    <!-- Flames -->
+                    <ellipse cx="82" cy="18" rx="3" ry="5" fill="#FF4500"/>
+                    <ellipse cx="102" cy="18" rx="3" ry="5" fill="#FF4500"/>
+                    <ellipse cx="122" cy="18" rx="3" ry="5" fill="#FF4500"/>
+                    
+                    <!-- Decorations -->
+                    <circle cx="70" cy="60" r="3" fill="#FF0000"/>
+                    <circle cx="90" cy="55" r="3" fill="#00FF00"/>
+                    <circle cx="110" cy="60" r="3" fill="#0000FF"/>
+                    <circle cx="130" cy="55" r="3" fill="#FFFF00"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Main Message Card -->
+        <div class="max-w-4xl mx-auto">
+            <div class="message-card bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 mb-8">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                        Selamat Hari Ulang Tahun! 🎂
+                    </h2>
+                    
+                    <div class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                        <p class="mb-4">
+                            Pada hari yang sangat istimewa ini, kami seluruh keluarga besar koperasi karyawan 
+                            <span class="font-semibold text-blue-600">Adaro Karya Mandiri</span> 
+                            dengan penuh sukacita mengucapkan selamat ulang tahun kepada Manager yang sangat kami hormati dan banggakan!
+                        </p>
+                        
+                        <p class="mb-4">
+                            Selama bertahun-tahun, Bapak/Ibu telah menunjukkan dedikasi yang luar biasa, kepemimpinan yang bijaksana, 
+                            dan komitmen yang tak tergoyahkan untuk kemajuan koperasi kita. Dengan visi yang jelas dan hati yang tulus, 
+                            Bapak/Ibu telah membimbing koperasi ini menjadi lebih maju, solid, dan bermanfaat bagi seluruh anggota.
+                        </p>
+                        
+                        <p class="mb-4">
+                            Terima kasih atas segala pengorbanan, kerja keras, dan perhatian yang telah Bapak/Ibu berikan. 
+                            Berkat kepemimpinan yang inspiratif, koperasi kita tidak hanya berkembang secara finansial, 
+                            tetapi juga menjadi keluarga besar yang saling mendukung dan peduli satu sama lain.
+                        </p>
+                        
+                        <p class="mb-4">
+                            Di usia yang baru ini, semoga Allah SWT senantiasa memberikan kesehatan yang prima, 
+                            kebahagiaan yang berlimpah, keberkahan dalam setiap langkah, dan umur yang panjang 
+                            untuk terus berkarya dan mengabdi. Semoga segala cita-cita dan harapan Bapak/Ibu 
+                            dapat tercapai dengan mudah dan lancar.
+                        </p>
+                        
+                        <p class="mb-4">
+                            Kami berharap koperasi Adaro Karya Mandiri akan terus berkembang pesat di bawah 
+                            kepemimpinan Bapak/Ibu, dan semoga kita semua dapat terus bersinergi membangun 
+                            masa depan yang lebih cerah dan sejahtera bersama.
+                        </p>
+                        
+                        <p class="font-semibold text-purple-600 text-xl">
+                            Selamat Ulang Tahun! Semoga panjang umur, sehat selalu, bahagia selamanya, 
+                            dan barakallahu fiik! 🤲✨
+                        </p>
+                        
+                        <p class="mt-4 text-center font-bold text-2xl text-gradient bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+                            "Selamat Hari Ulang Tahun yang Penuh Berkah!" 🎂🎉
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Wishes -->
+        <div class="max-w-4xl mx-auto mb-8">
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">
+                    Ucapan Selamat dari Berbagai Pihak 💝
+                </h3>
+                
+                <!-- Special VIP Wishes -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold text-center text-gray-700 mb-4">🌟 Ucapan Khusus dari Para Menteri 🌟</h4>
+                    
+                    <div class="grid gap-4 mb-6">
+                        <div class="bg-gradient-to-r from-amber-100 to-yellow-200 p-6 rounded-xl border-2 border-yellow-300 shadow-lg">
+                            <div class="font-bold text-amber-800 text-lg mb-2">🏛️ Menteri Pariwisata:</div>
+                            <div class="text-amber-700 leading-relaxed">
+                                "Selamat ulang tahun pak erik<br>
+                                Semoga selalu senantiasa diberikan kesehatan, kesuksesan, kebahagiaan, dan rezekinya selalu dilancarkan.<br>
+                                Terima kasih atas bimbingan dan dukungannya.<br>
+                                Semoga selalu menjadi pemimpin yang terbaik untuk kami<br>
+                                Aamiin"
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-emerald-100 to-green-200 p-6 rounded-xl border-2 border-green-300 shadow-lg">
+                            <div class="font-bold text-emerald-800 text-lg mb-2">💰 Menteri Keuangan:</div>
+                            <div class="text-emerald-700 leading-relaxed">
+                                "Selamat ulang tahun, Pak Fedrik<br>
+                                Semoga panjang umur, selalu diberikan kesehatan, dan senantiasa menjadi atasan yang bijaksana serta menginspirasi bagi kami semua. Terima kasih atas bimbingan dan kepemimpinan Bapak selama ini.<br>
+                                Semoga di usia yang baru ini, Bapak diberikan kebahagiaan dan kesuksesan yang berlimpah dalam setiap aspek kehidupan. Amin 🤲🏻🤲🏻🤲🏻"
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-blue-100 to-sky-200 p-6 rounded-xl border-2 border-blue-300 shadow-lg">
+                            <div class="font-bold text-blue-800 text-lg mb-2">🚗 Menteri Transportasi:</div>
+                            <div class="text-blue-700 leading-relaxed">
+                                "Selamat ulang tahun Pak Erick<br>
+                                Saya berharap dapat terus belajar dan berkembang di bawah pimpinan Pak Erick, dan saya yakin bahwa dengan pengalaman dan kebijaksanaan Pak Erick, kita dapat mencapai tujuan bersama."
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-purple-100 to-violet-200 p-6 rounded-xl border-2 border-purple-300 shadow-lg">
+                            <div class="font-bold text-purple-800 text-lg mb-2">🏦 Menteri Perbankan:</div>
+                            <div class="text-purple-700 leading-relaxed">
+                                "Selamat ulang tahun, Pak Erik<br>
+                                Semoga hari ini membawa kebahagiaan dan kesuksesan yang lebih besar di masa depan. 😇"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-gradient-to-r from-blue-100 to-blue-200 p-4 rounded-xl">
+                        <div class="font-semibold text-blue-800">🏢 Direksi PT Adaro Energy:</div>
+                        <div class="text-blue-700">"Selamat ulang tahun! Terima kasih atas dedikasi dalam memajukan koperasi karyawan. Semoga selalu sukses dan sehat!"</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-green-100 to-green-200 p-4 rounded-xl">
+                        <div class="font-semibold text-green-800">👥 Seluruh Anggota Koperasi:</div>
+                        <div class="text-green-700">"Happy Birthday Manager terbaik! Terima kasih telah menjadi pemimpin yang bijaksana dan peduli pada kami semua."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-purple-100 to-purple-200 p-4 rounded-xl">
+                        <div class="font-semibold text-purple-800">💼 Tim Administrasi:</div>
+                        <div class="text-purple-700">"Selamat ulang tahun Pak/Bu Manager! Semoga selalu diberi kemudahan dalam memimpin dan mengelola koperasi kita."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-orange-100 to-orange-200 p-4 rounded-xl">
+                        <div class="font-semibold text-orange-800">💰 Tim Keuangan:</div>
+                        <div class="text-orange-700">"Barakallahu fiik di hari ulang tahun! Semoga rezeki selalu berlimpah dan koperasi semakin berkah."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-red-100 to-red-200 p-4 rounded-xl">
+                        <div class="font-semibold text-red-800">🏭 Karyawan Tambang:</div>
+                        <div class="text-red-700">"Selamat ulang tahun Boss! Terima kasih sudah jadi jembatan antara karyawan lapangan dengan manajemen."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-indigo-100 to-indigo-200 p-4 rounded-xl">
+                        <div class="font-semibold text-indigo-800">🏢 Karyawan Kantor:</div>
+                        <div class="text-indigo-700">"Happy Birthday! Semoga panjang umur dan terus menginspirasi kami dengan kepemimpinan yang luar biasa."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-teal-100 to-teal-200 p-4 rounded-xl">
+                        <div class="font-semibold text-teal-800">⚖️ Badan Pengawas:</div>
+                        <div class="text-teal-700">"Selamat ulang tahun! Apresiasi tinggi atas transparansi dan akuntabilitas dalam mengelola koperasi."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-pink-100 to-pink-200 p-4 rounded-xl">
+                        <div class="font-semibold text-pink-800">👨‍👩‍👧‍👦 Keluarga Besar Karyawan:</div>
+                        <div class="text-pink-700">"Selamat ulang tahun! Terima kasih telah membantu meningkatkan kesejahteraan keluarga kami melalui koperasi."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-yellow-100 to-yellow-200 p-4 rounded-xl">
+                        <div class="font-semibold text-yellow-800">🤝 Mitra Bisnis:</div>
+                        <div class="text-yellow-700">"Happy Birthday! Semoga kerjasama kita terus berkembang dan memberikan manfaat bagi semua pihak."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-cyan-100 to-cyan-200 p-4 rounded-xl">
+                        <div class="font-semibold text-cyan-800">🏪 Supplier & Vendor:</div>
+                        <div class="text-cyan-700">"Selamat ulang tahun! Terima kasih atas kerjasama yang profesional dan saling menguntungkan selama ini."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-emerald-100 to-emerald-200 p-4 rounded-xl">
+                        <div class="font-semibold text-emerald-800">🎓 Alumni Koperasi:</div>
+                        <div class="text-emerald-700">"Selamat ulang tahun! Meski sudah pensiun, kami bangga melihat koperasi terus berkembang di bawah kepemimpinan Anda."</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-violet-100 to-violet-200 p-4 rounded-xl">
+                        <div class="font-semibold text-violet-800">🌟 Generasi Muda Koperasi:</div>
+                        <div class="text-violet-700">"Happy Birthday! Anda adalah inspirasi bagi kami untuk terus belajar dan berkontribusi pada koperasi."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Buttons -->
+        <div class="text-center mb-8">
+            <button id="celebrateBtn" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-300 mr-4 mb-4">
+                🎊 Rayakan Bersama!
+            </button>
+            
+            <button id="musicBtn" class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-300 mb-4">
+                🎵 Putar Musik Ulang Tahun
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-white/80 text-lg">
+            <p class="mb-2">Dengan penuh cinta dan hormat,</p>
+            <p class="font-bold text-xl text-yellow-200">
+                Keluarga Besar Koperasi Karyawan Adaro Karya Mandiri
+            </p>
+            <p class="mt-4 text-sm">
+                "Bersama membangun masa depan yang lebih baik" 🤝
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Fireworks effect
+        function createFirework(x, y) {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            
+            document.getElementById('fireworks').appendChild(firework);
+            
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        // Celebrate button functionality
+        document.getElementById('celebrateBtn').addEventListener('click', function() {
+            // Create multiple fireworks
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight * 0.6
+                    );
+                }, i * 200);
+            }
+            
+            // Change button text temporarily
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '🎉 Selamat Ulang Tahun! 🎉';
+            btn.classList.add('animate-pulse');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('animate-pulse');
+            }, 3000);
+        });
+
+        // Music button functionality
+        document.getElementById('musicBtn').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            
+            // Simulate music playing (visual feedback only)
+            btn.innerHTML = '🎵 Sedang Memutar... 🎵';
+            btn.classList.add('animate-bounce');
+            
+            // Create dancing emojis
+            const emojis = ['🎵', '🎶', '🎤', '🎸', '🥳'];
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.className = 'fixed text-4xl pointer-events-none z-50';
+                    emoji.style.left = Math.random() * window.innerWidth + 'px';
+                    emoji.style.top = Math.random() * window.innerHeight + 'px';
+                    emoji.style.animation = 'bounce 1s ease-out';
+                    
+                    document.body.appendChild(emoji);
+                    
+                    setTimeout(() => emoji.remove(), 1000);
+                }, i * 100);
+            }
+            
+            setTimeout(() => {
+                btn.innerHTML = '🎵 Musik Selesai';
+                btn.classList.remove('animate-bounce');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            }, 5000);
+        });
+
+        // Auto fireworks every 10 seconds
+        setInterval(() => {
+            createFirework(
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerHeight * 0.4
+            );
+        }, 10000);
+
+        // Welcome message
+        setTimeout(() => {
+            alert('🎉 Selamat datang di halaman ucapan ulang tahun! Klik tombol-tombol di bawah untuk merayakan bersama! 🎂');
+        }, 2000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9669a62ac4579d1a',t:'MTc1Mzc2MDk5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
